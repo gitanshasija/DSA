@@ -1,0 +1,31 @@
+class Solution {
+    public List<String> printVertically(String s) {
+        String[] w = s.split(" ");
+        int maxlen = 0;
+
+        for (int k = 0; k < w.length; k++) {
+            maxlen = Math.max(maxlen, w[k].length());
+        }
+
+        List<String> result = new ArrayList<>();
+
+        for (int i = 0; i < maxlen; i++) {
+            StringBuilder ans = new StringBuilder();
+
+            for (int j = 0; j < w.length; j++) {
+                if (w[j].length() <= i) {
+                    ans.append(' ');
+                } else {
+                    ans.append(w[j].charAt(i));
+                }
+            }
+
+            while (ans.length() > 0 && ans.charAt(ans.length() - 1) == ' ') {
+                ans.deleteCharAt(ans.length() - 1);
+            }
+
+            result.add(ans.toString());
+        }
+        return result;
+    }
+}
